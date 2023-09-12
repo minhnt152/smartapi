@@ -25,12 +25,12 @@ namespace smartapi.Controllers
         //GET api/accessevents?startDate=......
         [HttpGet]
         public ActionResult <AccessEventItemDto> GetAccessEvents([FromQuery]DateTime? startDate, [FromQuery]DateTime? endDate,
-                                                                        [FromQuery]string? cardNo, [FromQuery]string? chName, [FromQuery]string? doorName, 
-                                                                        [FromQuery]int? eventStt, [FromQuery]int? orient, [FromQuery]int pos)
+                                                                        [FromQuery]string? cardNo,[FromQuery]int? chId, [FromQuery]string? chName, [FromQuery]string? doorName, 
+                                                                        [FromQuery]int? eventCode, [FromQuery]int? direction, [FromQuery]int pos)
         {
             int lastPost = pos;
             bool hasMore = false;
-            var items = _repository.GetAccessEvents(startDate, endDate,cardNo, chName, doorName, eventStt, orient, pos, out lastPost, out hasMore);
+            var items = _repository.GetAccessEvents(startDate, endDate, cardNo ,chId, chName, doorName, eventCode, direction, pos, out lastPost, out hasMore);
             AccessEventItemDto itemReturn = new AccessEventItemDto();
             itemReturn.position = lastPost;
             itemReturn.hasMore = hasMore;
@@ -53,6 +53,7 @@ namespace smartapi.Controllers
         [HttpPost]
         public ActionResult<AccessEventInsertDto> CreateEvent(AccessEventInsertDto evtDto){
             var evtModel = _mapper.Map<AccessEvent>(evtDto);
+
             _repository.CreateAccessEvent(evtModel);
             _repository.SaveChanges();
 

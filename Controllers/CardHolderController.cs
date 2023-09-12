@@ -79,9 +79,9 @@ namespace smartapi.Controllers
 
         //POST api/cardholders/id/rights
         [HttpPost("{id}/rights")]
-        public ActionResult AddRights(int id, ICollection<AccessRightBasicDto> rights){
+        public ActionResult AddRights(int id, ICollection<AccessRightInsertBasicDto> rights){
 
-            foreach(AccessRightBasicDto right in rights){
+            foreach(AccessRightInsertBasicDto right in rights){
                 _repository.AddRights(id,_mapper.Map<AccessRight>(right));
             }
             _repository.SaveChanges();  

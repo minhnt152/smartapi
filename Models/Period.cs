@@ -14,15 +14,13 @@ public partial class Period
     /// </summary>
     public int WeekDay { get; set; }
 
-    /// <summary>
-    /// Start time
-    /// </summary>
-    public DateTime? Stime { get; set; }
+    public int? StartHour { get; set; }
 
-    /// <summary>
-    /// End time
-    /// </summary>
-    public DateTime? Etime { get; set; }
+    public int? StartMinute { get; set; }
+
+    public int? EndHour { get; set; }
+
+    public int? EndMinute { get; set; }
 
     public virtual Schedule? Sch { get; set; }
 }

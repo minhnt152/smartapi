@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using Microsoft.AspNetCore.Http.Features;
 using smartapi.Models;
 
@@ -18,6 +19,17 @@ namespace smartapi.Data
             if(item==null){
                  throw new ArgumentNullException(nameof(item));
             }
+
+            Card card = _context.Cards.FirstOrDefault(x=>x.CardNo == item.CardNo);
+            item.CardId = card.CardId;
+
+            CardHolder holder = _context.CardHolders.FirstOrDefault(x=>x.Cards.Contains(card));
+            item.ChId = holder.ChId;
+            item.ChName = holder.ChFname + " " + holder.ChLname;
+
+            Door door = _context.Doors.FirstOrDefault(x=>x.DoorId == item.DoorId);
+            item.DoorName = door.DoorName;
+
             _context.AccessEvents.Add(item);
         }
 
@@ -26,7 +38,7 @@ namespace smartapi.Data
             return _context.AccessEvents.FirstOrDefault(item => item.EventId == id);
         }
 
-        public IEnumerable<AccessEvent> GetAccessEvents(DateTime? startDate, DateTime? endDate, string? cardNo, string? chName, string? doorName, int? eventStt, int? orient, int pos, out int lastPos, out bool hasMore)
+        public IEnumerable<AccessEvent> GetAccessEvents(DateTime? startDate, DateTime? endDate, string? cardNo,int? chId, string? chName, string? doorName, int? eventStt, int? orient, int pos, out int lastPos, out bool hasMore)
         {
             int count = 5;
             if(pos<0) pos=0;
@@ -38,6 +50,7 @@ namespace smartapi.Data
 
             var events = _context.AccessEvents.Where(x=> (x.EventDate>=startDate && x.EventDate <=endDate) &&
                                                     (cardNo==null||x.CardNo==cardNo) &&
+                                                    (chId==null||x.CardId==chId) &&
                                                     (chName==null||x.ChName.ToLower().Contains(chName.ToLower())) &&
                                                     (doorName==null||x.DoorName.ToLower().Contains(doorName.ToLower())) &&
                                                     (eventStt==null||x.EventStt==eventStt) &&

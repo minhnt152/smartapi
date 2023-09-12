@@ -64,12 +64,10 @@ public partial class SmAccessParkingContext : DbContext
             entity.Property(e => e.CtrlrId).HasColumnName("ctrlr_id");
             entity.Property(e => e.CtrlrDgw)
                 .HasMaxLength(15)
-                .IsFixedLength()
                 .HasComment("default gateway")
                 .HasColumnName("ctrlr_dgw");
             entity.Property(e => e.CtrlrIp)
                 .HasMaxLength(15)
-                .IsFixedLength()
                 .HasColumnName("ctrlr_ip");
             entity.Property(e => e.CtrlrLnaddr)
                 .HasComment("line address")
@@ -83,7 +81,6 @@ public partial class SmAccessParkingContext : DbContext
                 .HasColumnName("ctrlr_name");
             entity.Property(e => e.CtrlrSnm)
                 .HasMaxLength(15)
-                .IsFixedLength()
                 .HasComment("subnet mask")
                 .HasColumnName("ctrlr_snm");
             entity.Property(e => e.Descr)
@@ -188,6 +185,9 @@ public partial class SmAccessParkingContext : DbContext
             entity.ToTable("access_controller_network");
 
             entity.Property(e => e.NetworkId).HasColumnName("network_id");
+            entity.Property(e => e.Adapter)
+                .HasMaxLength(100)
+                .HasColumnName("adapter");
             entity.Property(e => e.BrId).HasColumnName("br_id");
             entity.Property(e => e.Ext1)
                 .HasMaxLength(1000)
@@ -239,6 +239,7 @@ public partial class SmAccessParkingContext : DbContext
             entity.Property(e => e.CardNo)
                 .HasMaxLength(20)
                 .HasColumnName("card_no");
+            entity.Property(e => e.ChId).HasColumnName("ch_id");
             entity.Property(e => e.ChName)
                 .HasMaxLength(50)
                 .HasComment("Card holder full name")
@@ -260,6 +261,10 @@ public partial class SmAccessParkingContext : DbContext
             entity.HasOne(d => d.Card).WithMany(p => p.AccessEvents)
                 .HasForeignKey(d => d.CardId)
                 .HasConstraintName("access_event_card_id_fkey");
+
+            entity.HasOne(d => d.Ch).WithMany(p => p.AccessEvents)
+                .HasForeignKey(d => d.ChId)
+                .HasConstraintName("access_event_ch_id_fkey");
 
             entity.HasOne(d => d.Door).WithMany(p => p.AccessEvents)
                 .HasForeignKey(d => d.DoorId)
@@ -442,6 +447,7 @@ public partial class SmAccessParkingContext : DbContext
                 .HasComment("DO time out")
                 .HasColumnName("do_to");
             entity.Property(e => e.DoorEnable).HasColumnName("door_enable");
+            entity.Property(e => e.DoorMode).HasColumnName("door_mode");
             entity.Property(e => e.DoorName)
                 .HasMaxLength(50)
                 .HasColumnName("door_name");
@@ -449,6 +455,7 @@ public partial class SmAccessParkingContext : DbContext
                 .HasComment("LO time out")
                 .HasColumnName("lo_to");
             entity.Property(e => e.PButtonStt).HasColumnName("p_button_stt");
+            entity.Property(e => e.PDoor2Stt).HasColumnName("p_door2_stt");
             entity.Property(e => e.PDoorStt).HasColumnName("p_door_stt");
             entity.Property(e => e.PFireAlarm).HasColumnName("p_fire_alarm");
             entity.Property(e => e.PInput).HasColumnName("p_input");
@@ -469,7 +476,7 @@ public partial class SmAccessParkingContext : DbContext
 
             entity.Property(e => e.FacId).HasColumnName("fac_id");
             entity.Property(e => e.EmailAddr)
-                .HasMaxLength(20)
+                .HasMaxLength(50)
                 .HasColumnName("email_addr");
             entity.Property(e => e.FacAddr)
                 .HasMaxLength(100)
@@ -495,15 +502,11 @@ public partial class SmAccessParkingContext : DbContext
             entity.ToTable("period");
 
             entity.Property(e => e.PrdId).HasColumnName("prd_id");
-            entity.Property(e => e.Etime)
-                .HasComment("End time")
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("etime");
+            entity.Property(e => e.EndHour).HasColumnName("end_hour");
+            entity.Property(e => e.EndMinute).HasColumnName("end_minute");
             entity.Property(e => e.SchId).HasColumnName("sch_id");
-            entity.Property(e => e.Stime)
-                .HasComment("Start time")
-                .HasColumnType("timestamp without time zone")
-                .HasColumnName("stime");
+            entity.Property(e => e.StartHour).HasColumnName("start_hour");
+            entity.Property(e => e.StartMinute).HasColumnName("start_minute");
             entity.Property(e => e.WeekDay)
                 .HasComment("Sun=0; Mon=1...; Sat=6")
                 .HasColumnName("week_day");

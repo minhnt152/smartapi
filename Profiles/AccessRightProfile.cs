@@ -13,6 +13,7 @@ namespace smartapi.Profiles
 
             CreateMap<AccessRight,AccessRightBasicDto>();
             CreateMap<AccessRightInsertDto,AccessRight>();
+             CreateMap<AccessRightInsertBasicDto,AccessRight>();
             CreateMap<AccessRightDoorInsertDto,AccessRightDoor>();
             CreateMap<AccessRightHolderInsertDto,AccessRightHolder>();
 

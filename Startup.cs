@@ -42,6 +42,7 @@ namespace smartapi
             services.AddScoped<ICardHolderRepo, SqlCardHolderRepo>();  
             services.AddScoped<IFacilityRepo, SqlFacilityRepo>(); 
             services.AddScoped<IAccessCtrlrRepo, SqlAccessCtrlrRepo>();  
+            services.AddScoped<IAccessCtrlrModelRepo, SqlAccessCtrlrModelRepo>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

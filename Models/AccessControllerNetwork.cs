@@ -31,6 +31,8 @@ public partial class AccessControllerNetwork
 
     public string? Ext10 { get; set; }
 
+    public string? Adapter { get; set; }
+
     public virtual ICollection<AccessController> AccessControllers { get; set; } = new List<AccessController>();
 
     public virtual AccessControllerBrandSystem? Br { get; set; }

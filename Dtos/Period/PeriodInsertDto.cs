@@ -8,8 +8,12 @@ namespace smartapi.Dtos
     {
         public int WeekDay { get; set; }
 
-        public DateTime? Stime { get; set; }
+        public int? StartHour { get; set; }
 
-        public DateTime? Etime { get; set; }
+        public int? StartMinute { get; set; }
+
+        public int? EndHour { get; set; }
+
+        public int? EndMinute { get; set; }
     }
 }

@@ -9,10 +9,9 @@ namespace smartapi.Dtos
         public int RightId { get; set; }
         public int SchId { get; set; }
 
-        public string SchName { get; set; } = null!;
+        public string? RightName { get; set; }
 
-        public bool? SchEnable { get; set; }
-
+        public bool? IsEnable { get; set; }
         public string? Descr { get; set; }
 
     }

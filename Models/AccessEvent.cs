@@ -32,7 +32,11 @@ public partial class AccessEvent
 
     public int? CardId { get; set; }
 
+    public int? ChId { get; set; }
+
     public virtual Card? Card { get; set; }
+
+    public virtual CardHolder? Ch { get; set; }
 
     public virtual Door? Door { get; set; }
 }

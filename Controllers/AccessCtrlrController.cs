@@ -57,25 +57,25 @@ namespace smartapi.Controllers
         }
 
                 
-        //POST api/controllers/id/doors
-        [HttpPost("{id}/doors")]
-        public ActionResult AddDoors(int id, ICollection<DoorReadDto> doors){
+        // //POST api/controllers/id/doors
+        // [HttpPost("{id}/doors")]
+        // public ActionResult AddDoors(int id, ICollection<DoorReadDto> doors){
 
-            foreach(DoorReadDto door in doors){
-                _repository.AddDoor(id,_mapper.Map<Door>(door));
-            }
-            _repository.SaveChanges();  
-            return Ok("Thêm cửa thành công");
-        }
+        //     foreach(DoorReadDto door in doors){
+        //         _repository.AddDoor(id,_mapper.Map<Door>(door));
+        //     }
+        //     _repository.SaveChanges();  
+        //     return Ok("Thêm cửa thành công");
+        // }
 
-        [HttpDelete("{id}/doors")] 
-        public ActionResult DelCard(int id, DoorReadDto door){
+        // [HttpDelete("{id}/doors")] 
+        // public ActionResult DelCard(int id, DoorReadDto door){
 
-            _repository.DelDoor(id,_mapper.Map<Door>(door));
-            _repository.SaveChanges();
+        //     _repository.DelDoor(id,_mapper.Map<Door>(door));
+        //     _repository.SaveChanges();
 
-            return Ok("Xóa cửa thành công");
-        }
+        //     return Ok("Xóa cửa thành công");
+        // }
 
                
         //PUT api/controllers/{id}

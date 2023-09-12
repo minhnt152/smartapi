@@ -39,6 +39,10 @@ public partial class Door
 
     public string? Descr { get; set; }
 
+    public int? PDoor2Stt { get; set; }
+
+    public int? DoorMode { get; set; }
+
     public virtual ICollection<AccessEvent> AccessEvents { get; set; } = new List<AccessEvent>();
 
     public virtual ICollection<AccessRightDoor> AccessRightDoors { get; set; } = new List<AccessRightDoor>();

@@ -13,16 +13,17 @@ namespace smartapi.Dtos
         public int? CardId { get; set; }
 
         public string? CardNo { get; set; }
-
         public string? ChName { get; set; }
+
+        public int? ChId { get; set; }
 
         public int? DoorId { get; set; }
 
         public string? DoorName { get; set; }
 
-        public int? EventStt { get; set; }
+        public int? EventCode { get; set; }
 
-        public int? Orientation { get; set; }
+        public int? Direction { get; set; }
 
     }
 }

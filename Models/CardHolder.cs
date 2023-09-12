@@ -30,6 +30,8 @@ public partial class CardHolder
 
     public int? ChType { get; set; }
 
+    public virtual ICollection<AccessEvent> AccessEvents { get; set; } = new List<AccessEvent>();
+
     public virtual ICollection<AccessRightHolder> AccessRightHolders { get; set; } = new List<AccessRightHolder>();
 
     public virtual ICollection<Card> Cards { get; set; } = new List<Card>();

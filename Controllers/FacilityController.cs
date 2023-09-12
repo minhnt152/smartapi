@@ -57,25 +57,25 @@ namespace smartapi.Controllers
         }
 
                 
-        //POST api/facilities/id/holders
-        [HttpPost("{id}/holders")]
-        public ActionResult AddCard(int id, ICollection<CardHolderInsertDto> holders){
+        // //POST api/facilities/id/holders
+        // [HttpPost("{id}/holders")]
+        // public ActionResult AddCard(int id, ICollection<CardHolderInsertDto> holders){
 
-            foreach(CardHolderInsertDto holder in holders){
-                _repository.AddHolder(id,_mapper.Map<CardHolder>(holder));
-            }
-            _repository.SaveChanges();  
-            return Ok("Thêm holder thành công");
-        }
+        //     foreach(CardHolderInsertDto holder in holders){
+        //         _repository.AddHolder(id,_mapper.Map<CardHolder>(holder));
+        //     }
+        //     _repository.SaveChanges();  
+        //     return Ok("Thêm holder thành công");
+        // }
 
-        [HttpDelete("{id}/holders")] 
-        public ActionResult DelCard(int id, CardHolderInsertDto holder){
+        // [HttpDelete("{id}/holders")] 
+        // public ActionResult DelCard(int id, CardHolderInsertDto holder){
 
-            _repository.DelHolder(id,_mapper.Map<CardHolder>(holder));
-            _repository.SaveChanges();
+        //     _repository.DelHolder(id,_mapper.Map<CardHolder>(holder));
+        //     _repository.SaveChanges();
 
-            return Ok("Xóa holder thành công");
-        }
+        //     return Ok("Xóa holder thành công");
+        // }
         
         //PUT api/facilities/{id}
         [HttpPut("{id}")]
