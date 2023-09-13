@@ -19,6 +19,7 @@ namespace smartapi.Data
                  throw new ArgumentNullException(nameof(item));
             }
             _context.AccessControllerNetworks.Add(item);
+            _context.TableUpdates.FirstOrDefault(x=>x.TableId==1).LastUpdate = DateTime.Now;
         }
 
         public void DelNetwork(AccessControllerNetwork item)
@@ -28,6 +29,7 @@ namespace smartapi.Data
             }
 
             _context.AccessControllerNetworks.Remove(item);
+            _context.TableUpdates.FirstOrDefault(x=>x.TableId==1).LastUpdate = DateTime.Now;
         }
 
         public IEnumerable<AccessControllerNetwork> GetAllCtrlrNetworks()
@@ -53,6 +55,7 @@ namespace smartapi.Data
             }
 
             item1 = item;
+            _context.TableUpdates.FirstOrDefault(x=>x.TableId==1).LastUpdate = DateTime.Now;
         }
     }
 }

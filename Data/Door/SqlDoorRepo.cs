@@ -19,6 +19,7 @@ namespace smartapi.Data
                  throw new ArgumentNullException(nameof(item));
             }
             _context.Doors.Add(item);
+            _context.TableUpdates.FirstOrDefault(x=>x.TableId==3).LastUpdate = DateTime.Now;
         }
 
         public void DelDoor(Door item)
@@ -28,6 +29,7 @@ namespace smartapi.Data
             }
 
             _context.Doors.Remove(item);
+             _context.TableUpdates.FirstOrDefault(x=>x.TableId==3).LastUpdate = DateTime.Now;
         }
 
         public IEnumerable<Door> GetAllDoors()
@@ -59,6 +61,7 @@ namespace smartapi.Data
         {
             Door item1 = _context.Doors.Single(a => a.DoorId == item.DoorId);
             item1 = item;
+             _context.TableUpdates.FirstOrDefault(x=>x.TableId==3).LastUpdate = DateTime.Now;
         }
     }
 }

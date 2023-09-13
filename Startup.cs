@@ -43,6 +43,7 @@ namespace smartapi
             services.AddScoped<IFacilityRepo, SqlFacilityRepo>(); 
             services.AddScoped<IAccessCtrlrRepo, SqlAccessCtrlrRepo>();  
             services.AddScoped<IAccessCtrlrModelRepo, SqlAccessCtrlrModelRepo>();
+            services.AddScoped<ISettingRepo, SqlSettingRepo>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

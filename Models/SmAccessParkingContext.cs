@@ -31,6 +31,8 @@ public partial class SmAccessParkingContext : DbContext
 
     public virtual DbSet<AccessRightHolder> AccessRightHolders { get; set; }
 
+    public virtual DbSet<AccessSetting> AccessSettings { get; set; }
+
     public virtual DbSet<Card> Cards { get; set; }
 
     public virtual DbSet<CardHolder> CardHolders { get; set; }
@@ -44,6 +46,8 @@ public partial class SmAccessParkingContext : DbContext
     public virtual DbSet<Period> Periods { get; set; }
 
     public virtual DbSet<Schedule> Schedules { get; set; }
+
+    public virtual DbSet<TableUpdate> TableUpdates { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 
@@ -330,6 +334,21 @@ public partial class SmAccessParkingContext : DbContext
                 .HasConstraintName("access_right_holder_right_id_fkey");
         });
 
+        modelBuilder.Entity<AccessSetting>(entity =>
+        {
+            entity.HasKey(e => e.SettingId).HasName("access_settings_pkey");
+
+            entity.ToTable("access_settings");
+
+            entity.Property(e => e.SettingId).HasColumnName("setting_id");
+            entity.Property(e => e.SettingName)
+                .HasMaxLength(20)
+                .HasColumnName("setting_name");
+            entity.Property(e => e.SettingValue)
+                .HasMaxLength(100)
+                .HasColumnName("setting_value");
+        });
+
         modelBuilder.Entity<Card>(entity =>
         {
             entity.HasKey(e => e.CardId).HasName("card_pkey");
@@ -530,6 +549,23 @@ public partial class SmAccessParkingContext : DbContext
             entity.Property(e => e.SchName)
                 .HasMaxLength(50)
                 .HasColumnName("sch_name");
+        });
+
+        modelBuilder.Entity<TableUpdate>(entity =>
+        {
+            entity.HasKey(e => e.TableId).HasName("table_update_pkey");
+
+            entity.ToTable("table_update");
+
+            entity.Property(e => e.TableId)
+                .ValueGeneratedNever()
+                .HasColumnName("table_id");
+            entity.Property(e => e.LastUpdate)
+                .HasColumnType("timestamp without time zone")
+                .HasColumnName("last_update");
+            entity.Property(e => e.TableName)
+                .HasMaxLength(50)
+                .HasColumnName("table_name");
         });
 
         modelBuilder.Entity<User>(entity =>

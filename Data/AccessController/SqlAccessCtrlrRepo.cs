@@ -28,11 +28,13 @@ namespace smartapi.Data
                  throw new ArgumentNullException(nameof(item));
             }            
             _context.AccessControllers.Add(item);
+            _context.TableUpdates.FirstOrDefault(x=>x.TableId==2).LastUpdate = DateTime.Now;
         }
 
         public void DelCtrlr(AccessController item)
         {
             _context.AccessControllers.Remove(item);
+            _context.TableUpdates.FirstOrDefault(x=>x.TableId==2).LastUpdate = DateTime.Now;
         }
 
         public void DelDoor(int id, Door door)
@@ -63,6 +65,7 @@ namespace smartapi.Data
         {
             AccessController item1 = _context.AccessControllers.Single(a => a.CtrlrId == item.CtrlrId);
             item1=item;
+            _context.TableUpdates.FirstOrDefault(x=>x.TableId==2).LastUpdate = DateTime.Now;
         }
     }
 }
