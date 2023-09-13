@@ -21,14 +21,19 @@ namespace smartapi.Data
             }
 
             Card card = _context.Cards.FirstOrDefault(x=>x.CardNo == item.CardNo);
-            item.CardId = card.CardId;
+            if (card != null)
+                item.CardId = card.CardId;
 
             CardHolder holder = _context.CardHolders.FirstOrDefault(x=>x.Cards.Contains(card));
-            item.ChId = holder.ChId;
-            item.ChName = holder.ChFname + " " + holder.ChLname;
+            if (holder != null)
+            {
+                item.ChId = holder.ChId;
+                item.ChName = holder.ChFname + " " + holder.ChLname;
+            }
 
             Door door = _context.Doors.FirstOrDefault(x=>x.DoorId == item.DoorId);
-            item.DoorName = door.DoorName;
+            if (door != null)
+                item.DoorName = door.DoorName;
 
             _context.AccessEvents.Add(item);
         }

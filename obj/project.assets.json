@@ -1868,23 +1868,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\MANHdb\\.nuget\\packages\\": {},
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\PKAS\\smartapi\\smartapi.csproj",
+      "projectUniqueName": "D:\\00 LINKTEKK\\01 R&D Projects\\11 Konnek DeepSecure - V1.00\\03 Software\\01 Deep Secure\\20 Database\\smartapi\\smartapi.csproj",
       "projectName": "smartapi",
-      "projectPath": "D:\\Projects\\PKAS\\smartapi\\smartapi.csproj",
-      "packagesPath": "C:\\Users\\MANHdb\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\PKAS\\smartapi\\obj\\",
+      "projectPath": "D:\\00 LINKTEKK\\01 R&D Projects\\11 Konnek DeepSecure - V1.00\\03 Software\\01 Deep Secure\\20 Database\\smartapi\\smartapi.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "D:\\00 LINKTEKK\\01 R&D Projects\\11 Konnek DeepSecure - V1.00\\03 Software\\01 Deep Secure\\20 Database\\smartapi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\MANHdb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1893,6 +1893,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files (x86)\\OPC Foundation\\NuGetPackages": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1969,7 +1971,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
       }
     }
   }
