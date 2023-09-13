@@ -34,6 +34,7 @@ namespace smartapi.Data
 
         public void AddRights(int id, AccessRight right)
         {
+            if(_context.AccessRightHolders.Where(x=>x.ChId == id && x.RightId == right.RightId).ToList().Count()>0) return;
             AccessRightHolder arh = new AccessRightHolder();
             arh.RightId = right.RightId;
             arh.ChId = id;

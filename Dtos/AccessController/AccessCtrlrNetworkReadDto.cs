@@ -9,8 +9,10 @@ namespace smartapi.Dtos
             public int NetworkId { get; set; }
 
             public int? BrId { get; set; }
+            public string? Adapter { get; set; }
 
             public string? NetworkName { get; set; }
+            
 
             public string? Ext1 { get; set; }
 

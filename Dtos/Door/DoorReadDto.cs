@@ -27,7 +27,7 @@ namespace smartapi.Dtos
 
         public int? PLock { get; set; }
 
-        public int? PSirenD { get; set; }
+        public int? PSiren { get; set; }
 
         public int? PFireAlarm { get; set; }
 
