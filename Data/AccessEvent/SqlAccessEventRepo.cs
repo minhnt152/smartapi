@@ -30,6 +30,8 @@ namespace smartapi.Data
             Door door = _context.Doors.FirstOrDefault(x=>x.DoorId == item.DoorId);
             item.DoorName = door.DoorName;
 
+            item.DbDateTime = DateTime.Now;
+
             _context.AccessEvents.Add(item);
         }
 
@@ -38,17 +40,21 @@ namespace smartapi.Data
             return _context.AccessEvents.FirstOrDefault(item => item.EventId == id);
         }
 
-        public IEnumerable<AccessEvent> GetAccessEvents(DateTime? startDate, DateTime? endDate, string? cardNo,int? chId, string? chName, string? doorName, int? eventStt, int? orient, int pos, out int lastPos, out bool hasMore)
+        public IEnumerable<AccessEvent> GetAccessEvents(DateTime? startDate, DateTime? endDate,DateTime? dbStartDate, DateTime? dbEndDate, string? cardNo,int? chId, string? chName, string? doorName, int? eventStt, int? orient, int pos, out int lastPos, out bool hasMore)
         {
             int count = 5;
             if(pos<0) pos=0;
             if (startDate ==null) startDate = new DateTime(2022,01,01);
             if (endDate ==null) endDate = new DateTime(DateTime.Today.Year+1,01,01);
 
+            if (dbStartDate ==null) startDate = new DateTime(2022,01,01);
+            if (dbEndDate ==null) endDate = new DateTime(DateTime.Today.Year+1,01,01);
+
             lastPos = 0;
             hasMore =false;
 
             var events = _context.AccessEvents.Where(x=> (x.EventDate>=startDate && x.EventDate <=endDate) &&
+                                                    (x.DbDateTime>=dbStartDate && x.DbDateTime <=dbEndDate) &&
                                                     (cardNo==null||x.CardNo==cardNo) &&
                                                     (chId==null||x.CardId==chId) &&
                                                     (chName==null||x.ChName.ToLower().Contains(chName.ToLower())) &&

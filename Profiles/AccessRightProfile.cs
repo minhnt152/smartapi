@@ -11,9 +11,10 @@ namespace smartapi.Profiles
             CreateMap<AccessRight,AccessRightReadDto>()
                 .ForMember(att => att.Doors, act => act.MapFrom(src => src.AccessRightDoors.Select(x => x.Door).ToList()));
 
-            CreateMap<AccessRight,AccessRightBasicDto>();
+            CreateMap<AccessRightBasicDto,AccessRight>();
             CreateMap<AccessRightInsertDto,AccessRight>();
-             CreateMap<AccessRightInsertBasicDto,AccessRight>();
+
+            CreateMap<AccessRightInsertBasicDto,AccessRight>();
             CreateMap<AccessRightDoorInsertDto,AccessRightDoor>();
             CreateMap<AccessRightHolderInsertDto,AccessRightHolder>();
 

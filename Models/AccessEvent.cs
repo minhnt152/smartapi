@@ -34,6 +34,8 @@ public partial class AccessEvent
 
     public int? ChId { get; set; }
 
+    public DateTime? DbDateTime { get; set; }
+
     public virtual Card? Card { get; set; }
 
     public virtual CardHolder? Ch { get; set; }

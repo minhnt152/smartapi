@@ -9,6 +9,7 @@ namespace smartapi.Dtos
         public int EventId { get; set; }
 
         public DateTime? EventDate { get; set; }
+        public DateTime? DbDateTime { get; set; }
 
         public int? CardId { get; set; }
 

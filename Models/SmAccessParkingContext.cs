@@ -248,6 +248,9 @@ public partial class SmAccessParkingContext : DbContext
                 .HasMaxLength(50)
                 .HasComment("Card holder full name")
                 .HasColumnName("ch_name");
+            entity.Property(e => e.DbDateTime)
+                .HasColumnType("timestamp without time zone")
+                .HasColumnName("db_date_time");
             entity.Property(e => e.DoorId).HasColumnName("door_id");
             entity.Property(e => e.DoorName)
                 .HasMaxLength(50)
