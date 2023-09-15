@@ -21,14 +21,23 @@ namespace smartapi.Data
             }
 
             Card card = _context.Cards.FirstOrDefault(x=>x.CardNo == item.CardNo);
-            item.CardId = card.CardId;
+            if (card != null)
+            {
+                item.CardId = card.CardId;
+            }
 
             CardHolder holder = _context.CardHolders.FirstOrDefault(x=>x.Cards.Contains(card));
+            if (holder != null)
+            {
             item.ChId = holder.ChId;
             item.ChName = holder.ChFname + " " + holder.ChLname;
+            }
 
             Door door = _context.Doors.FirstOrDefault(x=>x.DoorId == item.DoorId);
-            item.DoorName = door.DoorName;
+            if (door != null)
+            {
+                item.DoorName = door.DoorName;
+            }
 
             item.DbDateTime = DateTime.Now;
 
@@ -44,17 +53,17 @@ namespace smartapi.Data
         {
             int count = 5;
             if(pos<0) pos=0;
-            if (startDate ==null) startDate = new DateTime(2022,01,01);
-            if (endDate ==null) endDate = new DateTime(DateTime.Today.Year+1,01,01);
+            if (startDate ==null) startDate = new DateTime(1970,01,01);
+            if (endDate ==null) endDate = DateTime.Today.AddDays(1);
 
-            if (dbStartDate ==null) startDate = new DateTime(2022,01,01);
-            if (dbEndDate ==null) endDate = new DateTime(DateTime.Today.Year+1,01,01);
+            if (dbStartDate ==null) dbStartDate = new DateTime(1970,01,01);
+            if (dbEndDate ==null) dbEndDate = DateTime.Today.AddDays(1);
 
             lastPos = 0;
             hasMore =false;
 
-            var events = _context.AccessEvents.Where(x=> (x.EventDate>=startDate && x.EventDate <=endDate) &&
-                                                    (x.DbDateTime>=dbStartDate && x.DbDateTime <=dbEndDate) &&
+            var events = _context.AccessEvents.Where(x=> (x.EventDate>startDate && x.EventDate <=endDate) &&
+                                                    (x.DbDateTime>dbStartDate && x.DbDateTime <=dbEndDate) &&
                                                     (cardNo==null||x.CardNo==cardNo) &&
                                                     (chId==null||x.CardId==chId) &&
                                                     (chName==null||x.ChName.ToLower().Contains(chName.ToLower())) &&
